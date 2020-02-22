@@ -1,36 +1,25 @@
 <?php
-interface MyInt {
-    function funcI();
-    function funcP();
-} 
-class A {
-    protected $prop1;
-    private $prop2;
-
-    function funcA(){
-       return $this->prop2;
-    }
-}
-class B extends A {
-    function funcB(){
-       return $this->prop1;
-    }
-}
-class C extends B implements MyInt {
-    function funcB(){
-       return $this->prop1;
-    }
-    function funcP(){
-       return 123;
-    }
-    function funcI(){}
+interface Transport {
+    function deliver();
     
-}  
-$b = new B();
-$b->funcA();
-$c = new C();
-$c->funcI();
+} 
 
+class Truck implements Transport{
+    function deliver(){
+        echo('Везем по дороге');
+    }
+}
 
+class Ship implements Transport{
+    function deliver(){
+        echo('Везем по воде');
+    }
+}
 
+$truck1 = new Truck();
+
+$ship1 = new Ship();
+
+$truck1->deliver();
+$ship1->deliver();
 ?>
